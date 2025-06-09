@@ -70,7 +70,6 @@ class Home extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Obx(() {
-              // Obx will rebuild the GridView when productData changes
               if (controller.productData.isEmpty &&
                   controller.searchTerm.value.isNotEmpty) {
                 return Center(

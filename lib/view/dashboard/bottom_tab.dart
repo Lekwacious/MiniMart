@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/cart_controller.dart';
 import '../../utils/app_colors.dart';
 import '../cart/cart_screen.dart';
 import '../product/favourite_products.dart';
@@ -20,7 +21,7 @@ class HomeNavigationBar extends StatefulWidget {
 
 class _HomeNavigationBarState extends State<HomeNavigationBar> {
   late int _currentTabIndex = widget.page;
-
+  final CartController cartController = Get.put(CartController());
   @override
   void initState() {
     super.initState();
@@ -102,17 +103,48 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> {
           ),
         ),
       ),
+
       BottomNavigationBarItem(
-        icon: Image.asset(
-          "assets/pngs/cart.png",
-          color: Colors.grey,
-          width: iconSize,
-          height: iconSize,
-          errorBuilder: (context, error, stackTrace) => const Icon(
-              Icons.shopping_cart_outlined,
+        icon: Obx(() => Stack(
+          alignment: Alignment.center,
+          children: [
+            Image.asset(
+              "assets/pngs/cart.png",
               color: Colors.grey,
-              size: iconSize),
-        ),
+              width: iconSize,
+              height: iconSize,
+              errorBuilder: (context, error, stackTrace) =>
+              const Icon(Icons.shopping_cart_outlined, color: Colors.grey, size: iconSize),
+            ),
+
+            if (cartController.totalCartItems > 0)
+              Positioned(
+                right: 0,
+                top: 0,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                      color: Colors.red, // Badge color
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.white, width: 1.5)
+                  ),
+                  constraints: const BoxConstraints(
+                    minWidth: 16,
+                    minHeight: 16,
+                  ),
+                  child: Text(
+                    '${cartController.totalCartItems}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+          ],
+        )),
         label: 'Cart',
         activeIcon: _buildActiveIconContainer(
           Image.asset(
@@ -121,10 +153,11 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> {
             width: iconSize,
             height: iconSize,
             errorBuilder: (context, error, stackTrace) =>
-                Icon(Icons.shopping_cart, color: Colors.white, size: iconSize),
+            const Icon(Icons.shopping_cart, color: Colors.white, size: iconSize),
           ),
         ),
       ),
+
       BottomNavigationBarItem(
         icon: const Icon(Icons.favorite_border,
             color: Colors.grey, size: iconSize),
@@ -132,7 +165,7 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> {
         activeIcon: _buildActiveIconContainer(
           const Icon(Icons.favorite_border,
               color: Colors.white,
-              size: iconSize), // Using filled favorite for active
+              size: iconSize),
         ),
       ),
       BottomNavigationBarItem(

@@ -48,7 +48,7 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'DELIVERY ADDRESS', // Title line 1
+            'DELIVERY ADDRESS',
             style: GoogleFonts.ibmPlexSans(
               textStyle: const TextStyle(
                 fontSize: 10,
@@ -58,11 +58,11 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Text(
-            deliveryLocation, // Dynamic delivery location
+            deliveryLocation,
             style: GoogleFonts.ibmPlexSans(
               textStyle: const TextStyle(
                 fontSize: 12,
-                color: appDarkGreyColor, // Changed from user's appDarkGreyColor to match title
+                color: appDarkGreyColor,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -78,7 +78,7 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
         const SizedBox(width: 8),
       ],
         bottom: searchController != null?  PreferredSize(
-        preferredSize: const Size.fromHeight(50.0), // Height of the search bar area
+        preferredSize: const Size.fromHeight(50.0),
         child: Padding(
           padding:
           const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
@@ -96,7 +96,7 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               prefixIcon: Icon(Icons.search, color: Colors.grey[400]),
               filled: true,
-              fillColor: Colors.white, // Search field background
+              fillColor: Colors.white,
               contentPadding:
               const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
               border: OutlineInputBorder(
@@ -119,5 +119,5 @@ class ReusableAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 50.0); // Standard AppBar height + search bar area height
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 50.0);
 }

@@ -9,9 +9,8 @@ class CartController extends GetxController {
   var cartItems = <CartItemModel>[].obs;
   var favouriteItems = <CartItemModel>[].obs;
   final double shippingCost = 10.0;
-  var isLiked = false.obs;
 
-
+  int get totalCartItems => cartItems.length;
   void incrementQuantity(int id) {
     var item = cartItems.firstWhereOrNull((item) => item.id == id);
     if (item != null) {
@@ -25,8 +24,6 @@ class CartController extends GetxController {
     if (item != null && item.quantity.value > 1) {
       item.quantity.value--;
     } else if (item != null && item.quantity.value == 1) {
-      // Optionally, you could remove the item if quantity becomes 0
-      // removeItem(id);
     }
   }
 
@@ -56,7 +53,7 @@ class CartController extends GetxController {
     var existingItem = favouriteItems.firstWhereOrNull((item) => item.id == newItem.id);
     if (existingItem != null) {
       existingItem.isLiked.value = false;
-      favouriteItems.remove(existingItem); // Remove from favorites list
+      favouriteItems.remove(existingItem);
 
       AppSnackBars.successSnackBar(
         message: "Item has been unliked",
@@ -73,9 +70,4 @@ class CartController extends GetxController {
     }
   }
 
-  // A helper method to check if an item is currently liked by looking into favouriteItems
-  // This might be useful if you're fetching data and want to pre-set `isLiked` for items.
-  bool isProductLiked(int productId) {
-    return favouriteItems.any((item) => item.id == productId && item.isLiked == "true");
-  }
 }

@@ -188,9 +188,9 @@ class ProductDetailsScreen extends StatelessWidget {
                       price: double.parse(product['price']!)));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: appButtonColor, // Button color
+                  backgroundColor: appButtonColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8), // Rounded corners
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   elevation: 0, // No shadow
                 ),

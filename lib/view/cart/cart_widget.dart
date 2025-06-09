@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:minimart/utils/app_colors.dart'; // Ensure this path is correct
-
+import 'package:minimart/utils/app_colors.dart';
 import '../../controllers/cart_controller.dart';
-import '../../models/cart_model.dart'; // Ensure this path is correct
+import '../../models/cart_model.dart';
 
 class CartItemWidget extends StatelessWidget {
   final CartItemModel item;
-  final CartController controller = Get.find(); // Find the existing controller
+  final CartController controller = Get.find();
 
   CartItemWidget({Key? key, required this.item}) : super(key: key);
 
@@ -74,16 +73,15 @@ class CartItemWidget extends StatelessWidget {
                       fontWeight: FontWeight.w500),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween, // Push quantity and delete apart
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Quantity Controls
                     Row(
                       children: [
                         _buildQuantityButton(
                           icon: Icons.remove,
                           onPressed: () =>
                               controller.decrementQuantity(item.id),
-                          isEnabled: item.quantity.value > 1, // Disable if quantity is 1
+                          isEnabled: item.quantity.value > 1,
                         ),
                         Obx(() => Container(
                           padding: const EdgeInsets.symmetric(
@@ -93,7 +91,8 @@ class CartItemWidget extends StatelessWidget {
                             style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.w600),
                           ),
-                        )),
+                        ),
+                        ),
                         _buildQuantityButton(
                           icon: Icons.add,
                           onPressed: () =>
@@ -101,14 +100,14 @@ class CartItemWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // Delete Button
+
                     InkWell(
                       onTap: () => controller.removeItem(item.id),
                       child: Container(
                         padding: const EdgeInsets.all(6.0),
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(15.0), // Make it circular
+                          borderRadius: BorderRadius.circular(15.0),
                         ),
                         child: Icon(Icons.delete_outline,
                             color: Colors.grey[700], size: 20),
@@ -119,7 +118,6 @@ class CartItemWidget extends StatelessWidget {
               ],
             ),
           ),
-          // Removed const SizedBox(width: 12.0) here, as it was trailing and not serving a clear purpose
         ],
       ),
     );
@@ -131,7 +129,7 @@ class CartItemWidget extends StatelessWidget {
         bool isEnabled = true}) {
     return InkWell(
       onTap: isEnabled ? onPressed : null,
-      borderRadius: BorderRadius.circular(20), // For splash effect
+      borderRadius: BorderRadius.circular(20),
       child: Container(
         height: 36,
         width: 36,
@@ -139,12 +137,12 @@ class CartItemWidget extends StatelessWidget {
           color: isEnabled
               ? Colors.blue.withOpacity(0.1)
               : Colors.grey.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(32), // Circular background
+          borderRadius: BorderRadius.circular(32),
         ),
         child: Icon(
           icon,
           size: 20,
-          color: isEnabled ? appDarkGreyColor : Colors.grey, // Ensure appDarkGreyColor is defined in app_colors.dart
+          color: isEnabled ? appDarkGreyColor : Colors.grey,
         ),
       ),
     );

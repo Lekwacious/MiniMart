@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:minimart/component/app_snackbars.dart'; // Ensure this path is correct
+import 'package:minimart/component/app_snackbars.dart';
 
-import '../../component/app_bar.dart'; // Ensure this path is correct
-import '../../controllers/cart_controller.dart'; // Ensure this path is correct
-import '../../utils/app_colors.dart'; // Ensure this path is correct
-import 'cart_widget.dart'; // This is CartItemWidget.dart, ensure correct naming/path
+import '../../component/app_bar.dart';
+import '../../controllers/cart_controller.dart';
+import '../../utils/app_colors.dart';
+import 'cart_widget.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -60,7 +60,7 @@ class _CartScreenState extends State<CartScreen> {
             ),
           ),
           Expanded(
-            child: Obx( // Moved Obx here to observe cartItems state for list/empty state
+            child: Obx(
                   () => controller.cartItems.isEmpty
                   ? Center(
                 child: Column(
@@ -134,7 +134,7 @@ class _CartScreenState extends State<CartScreen> {
             const SizedBox(height: 8),
             _buildInfoRow(
                 'Shipping', '\$${controller.shippingCost.toStringAsFixed(2)}'),
-            const Divider(height: 24, thickness: 1, color: Colors.grey), // Use const Divider
+            const Divider(height: 24, thickness: 1, color: Colors.grey),
              _buildInfoRow(
               'Total',
               '\$${controller.total.toStringAsFixed(2)}',
@@ -156,7 +156,7 @@ class _CartScreenState extends State<CartScreen> {
                     if (states.contains(MaterialState.pressed)) {
                       return appButtonColor.withOpacity(0.2);
                     }
-                    return null; // Defer to the widget's default.
+                    return null;
                   },
                 ),
               ),
@@ -166,7 +166,6 @@ class _CartScreenState extends State<CartScreen> {
                     "Proceeding to checkout with total: \$${controller.total.toStringAsFixed(2)}",
                     icon: const Icon(Icons.check_circle_outline_outlined));
               },
-              // Wrap the button text in Obx too, so the checkout total updates
               child: Text(
                 'Checkout (\$${controller.total.toStringAsFixed(2)})',
                 style: GoogleFonts.ibmPlexSans(
@@ -196,7 +195,7 @@ class _CartScreenState extends State<CartScreen> {
         ),
         Text(
           value,
-          style: TextStyle( // Removed GoogleFonts.ibmPlexSans here for consistency with original code
+          style: TextStyle(
             fontSize: isTotal ? 17 : 15,
             color: isTotal ? Colors.black87 : Colors.black54,
             fontWeight: isTotal ? FontWeight.bold : FontWeight.w600,

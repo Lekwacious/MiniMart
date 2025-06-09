@@ -36,7 +36,7 @@ class ProductItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
                     imagePath,
-                    fit: BoxFit.cover, // Changed to cover to fill space better
+                    fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
                         color: Colors.grey[300],

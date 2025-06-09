@@ -34,7 +34,6 @@ class FavouriteProductScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.back(); // Assuming you want to go back
                   },
                   child: const Icon(Icons.arrow_back_ios_new,
                       size: 20, color: Colors.black87),
@@ -82,7 +81,6 @@ class FavouriteProductScreen extends StatelessWidget {
                     child: ListView.builder(
                       itemCount: controller.favouriteItems.length,
                       itemBuilder: (BuildContext context, int index) {
-                        // Remove the Expanded here
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -93,7 +91,7 @@ class FavouriteProductScreen extends StatelessWidget {
                                 height: 331,
                                 decoration: BoxDecoration(
                                   color: Colors.grey[
-                                      100], // Background color of the image container
+                                      100],
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                                 child: Stack(
