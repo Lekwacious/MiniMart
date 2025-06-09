@@ -73,6 +73,7 @@ cd minimart
 flutter pub get
 flutter run
 ```
+```text
 minimart/
 ├── lib/
 │   ├── component/            # Reusable UI widgets (e.g., AppBar)
@@ -89,7 +90,7 @@ minimart/
 │   └── pngs/                 # Image assets
 ├── pubspec.yaml              # Dependencies and metadata
 └── README.md                 # Documentation
-
+````
 🛠 Key Components & Technologies
 Flutter: UI toolkit for building cross-platform applications.
 
