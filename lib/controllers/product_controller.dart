@@ -30,10 +30,10 @@ class ProductController extends GetxController{
       "isLiked": false.obs,
     },
     {
-      'id': '3',
+      'id': '4',
       'imagePath': 'assets/pngs/earpod.png',
       'name': 'Apple Airpods 4',
-      'details': 'Active Noise Cancellatio...',
+      'details': 'Active Noise Cancellation...',
       'price': '129.00',
       "isLiked": false.obs,
     },
