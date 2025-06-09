@@ -75,30 +75,32 @@ class CartItemWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        _buildQuantityButton(
-                          icon: Icons.remove,
-                          onPressed: () =>
-                              controller.decrementQuantity(item.id),
-                          isEnabled: item.quantity.value > 1,
-                        ),
-                        Obx(() => Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 4.0),
-                          child: Text(
-                            '${item.quantity.value}',
-                            style: const TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w600),
+                    Obx(()=>
+                       Row(
+                        children: [
+                          _buildQuantityButton(
+                            icon: Icons.remove,
+                            onPressed: () =>
+                                controller.decrementQuantity(item.id),
+                            isEnabled: item.quantity.value > 1,
                           ),
-                        ),
-                        ),
-                        _buildQuantityButton(
-                          icon: Icons.add,
-                          onPressed: () =>
-                              controller.incrementQuantity(item.id),
-                        ),
-                      ],
+                           Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 4.0),
+                            child: Text(
+                              '${item.quantity.value}',
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w600),
+                            ),
+
+                          ),
+                          _buildQuantityButton(
+                            icon: Icons.add,
+                            onPressed: () =>
+                                controller.incrementQuantity(item.id),
+                          ),
+                        ],
+                      ),
                     ),
 
                     InkWell(
