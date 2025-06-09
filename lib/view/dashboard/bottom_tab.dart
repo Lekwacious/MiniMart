@@ -73,7 +73,7 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> {
     final kTabPages = <Widget>[
        Home(),
       const CartScreen(),
-      const FavouriteProductScreen(),
+       FavouriteProductScreen(),
       const ProfileScreen(),
     ];
 

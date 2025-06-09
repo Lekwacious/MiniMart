@@ -4,13 +4,14 @@ import 'package:get/get.dart';
 class ProductController extends GetxController{
   final TextEditingController searchController = TextEditingController();
 
-  final List<Map<String, String>> _allProducts = [
+  final List<Map<String, dynamic>> _allProducts = [
     {
       'id': '1',
       'imagePath': 'assets/pngs/apple.png',
       'name': 'Apple iPhone 16',
       'details': '128GB Teal',
       'price': '700.00',
+      "isLiked": false.obs,
     },
     {
       'id': '2',
@@ -18,6 +19,7 @@ class ProductController extends GetxController{
       'name': 'M4 Macbook Air 13"',
       'details': '256GB Sky blue',
       'price': '1000.00',
+      "isLiked": false.obs,
     },
     {
       'id': '3',
@@ -25,6 +27,7 @@ class ProductController extends GetxController{
       'name': 'Google Pixel 9A',
       'details': '128GB Iris',
       'price': '499.00',
+      "isLiked": false.obs,
     },
     {
       'id': '3',
@@ -32,9 +35,10 @@ class ProductController extends GetxController{
       'name': 'Apple Airpods 4',
       'details': 'Active Noise Cancellatio...',
       'price': '129.00',
+      "isLiked": false.obs,
     },
   ];
-  final RxList<Map<String, String>> productData = <Map<String, String>>[].obs;
+  final RxList<Map<String, dynamic>> productData = <Map<String, dynamic>>[].obs;
 
 
   final RxString searchTerm = ''.obs;

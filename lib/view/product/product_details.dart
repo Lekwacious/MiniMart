@@ -8,7 +8,7 @@ import 'package:minimart/utils/app_colors.dart';
 import '../../component/app_bar.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  final Map<String, String> product;
+  final Map<String, dynamic> product;
   ProductDetailsScreen({super.key, required this.product});
   var controller = Get.put(CartController());
   @override
@@ -24,12 +24,13 @@ class ProductDetailsScreen extends StatelessWidget {
       body: Column(
         children: [
           InkWell(
-            onTap: (){
+            onTap: () {
               Get.back();
             },
             child: Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 16.0,),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+              ),
               child: Row(
                 children: [
                   const Icon(Icons.arrow_back_ios_new,
@@ -91,12 +92,29 @@ class ProductDetailsScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              child: IconButton(
-                                icon: const Icon(Icons.favorite_border,
-                                    color: Colors.black),
-                                onPressed: () {
-                                  // Handle favorite
-                                },
+                              child: Obx(()=>
+                                IconButton(
+                                  icon: Icon(
+                                    product["isLiked"].value == false
+                                        ? Icons.favorite_border
+                                        : Icons.favorite,
+                                    color: product["isLiked"].value == false
+                                        ? Colors.black
+                                        : Colors.red,
+                                  ),
+                                  onPressed: () {
+                                    controller.addToFavourite(CartItemModel(
+                                        isLiked: product['isLiked'],
+                                        id: int.parse(product['id']!),
+                                        name: product['name']!,
+                                        imageUrl: product['imagePath']!,
+                                        price: double.parse(product['price']!)
+
+                                    )
+                                    );
+                                    // Handle favorite
+                                  },
+                                ),
                               ),
                             ),
                           ),

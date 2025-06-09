@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProductItem extends StatelessWidget {
@@ -6,24 +7,24 @@ class ProductItem extends StatelessWidget {
   final String name;
   final String details;
   final String price;
+  final RxBool isLike;
 
-  const ProductItem({
+  ProductItem({
     super.key,
     required this.imagePath,
     required this.name,
     required this.details,
     required this.price,
-  });
+    RxBool? isLike,
+  }) : isLike = isLike ?? false.obs;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white, // Light grey background for product item
+        color: Colors.white,
         borderRadius: BorderRadius.circular(12.0),
-
       ),
-
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(

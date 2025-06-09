@@ -1,13 +1,13 @@
-
 import 'package:get/get.dart';
 
 class CartItemModel {
   final int id;
   final String name;
-  final String imageUrl; // Placeholder for actual image path or URL
+  final String imageUrl;
   final double price;
   final String stockStatus;
   RxInt quantity;
+  final RxBool isLiked;
 
   CartItemModel({
     required this.id,
@@ -16,5 +16,16 @@ class CartItemModel {
     required this.price,
     this.stockStatus = 'In stock',
     int initialQuantity = 1,
-  }) : quantity = initialQuantity.obs;
+    RxBool? isLiked,
+  })  : quantity = initialQuantity.obs,
+        isLiked = isLiked ?? false.obs;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is CartItemModel && other.id == id;
+  }
+
+  @override
+  int get hashCode => id.hashCode;
 }

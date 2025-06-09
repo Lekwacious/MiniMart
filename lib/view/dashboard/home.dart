@@ -121,6 +121,8 @@ class Home extends StatelessWidget {
                       name: product['name'] ?? 'N/A',
                       details: product['details'] ?? 'No details',
                       price: product['price'] ?? '\$0.00',
+                      isLike: product['isLiked'],
+
                     ),
                   );
                 },
